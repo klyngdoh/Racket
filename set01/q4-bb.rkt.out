@@ -1,0 +1,8 @@
+q4.rkt:26:0: read: expected a `)' to close `('
+  possible cause: indentation suggests a missing `)' before line 46
+  possible cause: newline within string suggests a missing '"' on line 65
+  context...:
+   /proj/racket/plt-released/recent/share/pkgs/htdp-lib/lang/htdp-reader.rkt:14:6: loop
+   /proj/racket/plt-released/recent/share/pkgs/htdp-lib/lang/htdp-reader.rkt:14:6: loop
+   ...ib/mzlib/etc.rkt:75:38
+   standard-module-name-resolver

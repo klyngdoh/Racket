@@ -1,0 +1,21 @@
+All Stream tests passsed.
+Running test: enough calls to allMatch... PASS
+Running test: enough calls to anyMatch... PASS
+Running test: enough calls to count... PASS
+Running test: enough calls to distinct... PASS
+Running test: enough calls to filter... PASS
+Running test: enough calls to findAny... FAIL
+  actual:   false
+  expected: true
+Running test: enough calls to findFirst... FAIL
+  actual:   false
+  expected: true
+Running test: enough calls to forEach... PASS
+Running test: enough calls to map... PASS
+Running test: enough calls to reduce... PASS
+Running test: enough calls to skip... PASS
+Running test: enough calls to toArray... PASS
+Running test: main runs without errors 1/3... PASS
+Running test: main runs without errors 2/3... PASS
+Running test: main runs without errors 3/3... PASS
+13 success(es) 2 failure(s) 0 error(s) 15 test(s) run

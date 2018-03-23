@@ -1,0 +1,126 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname q2) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require rackunit)
+(require "extras.rkt")
+(check-location "01" "q2.rkt")
+      
+(provide furlongs-to-barleycorns)
+
+;; DATA DEFINITIONS
+;; furLength is represented as a non-negative real number
+;; chainLength is represented as a non-negative real number
+;; rodLength is represented as a non-negative real number
+;; feetLength is represented as a non-negative real number
+;; inchLength is represented as a non-negative real number
+;; barLength is represented as a non-negative real number
+
+;; GLOBAL CONSTANTS
+(define FUR_CHAIN 10)
+(define CHAIN_ROD 4)
+(define ROD_FT 16.5)
+(define FT_IN 12)
+(define IN_BAR 3)
+
+;; furlongs-to-barleycorns: furLength -> barLength
+;; GIVEN: A length in furlongs
+;; RETURNS: The equivalent length in barleycorns
+
+;; furlongs-to-chains: furLength -> chainLength
+;; GIVEN: A length in furlongs
+;; RETURNS: The equivalent length in chains
+
+;; furlongs-to-barleycorns: chainLength -> rodLength
+;; GIVEN: A length in chains
+;; RETURNS: The equivalent length in rods
+
+;; furlongs-to-barleycorns: rodLength -> feetLength
+;; GIVEN: A length in rods
+;; RETURNS: The equivalent length in feet
+
+;; furlongs-to-barleycorns: feetLength -> inchLength
+;; GIVEN: A length in feet
+;; RETURNS: The equivalent length in inches
+
+;; furlongs-to-barleycorns: inchLength -> barLength
+;; GIVEN: A length in inches
+;; RETURNS: The equivalent length in barleycorns
+
+;;EXAMPLES:
+;; (furlongs-to-barleycorns 2) = 47520
+;; (furlongs-to-barleycorns 4.5) = 106920
+
+;; (furlongs-to-chains 2) = 20
+;; (furlongs-to-chains 4.5) = 45
+
+;; (chains-to-rods 2) = 8
+;; (chains-to-rods 4.5) = 18
+
+;; (rods-to-feet 2) = 33
+;; (rods-to-feet 4.5) = 74.25
+
+;; (feet-to-inch 2) = 24
+;; (feet-to-inch 4.5) = 54
+
+;; (inch-to-barleycorns 2) = 6
+;; (inch-to-barleycorns 4.5) = 13.5
+
+;; DESIGN STRATEGY: Transcribe mathematical formula
+
+
+(define (furlongs-to-chains furLength)
+  (* furLength FUR_CHAIN))
+
+(define (chains-to-rods chainLength)
+  (* chainLength CHAIN_ROD))
+
+(define (rods-to-feet rodLength)
+  (* rodLength ROD_FT))
+
+(define (feet-to-inch feetLength)
+  (* feetLength FT_IN))
+
+(define (inch-to-barleycorns inchLength)
+  (* inchLength IN_BAR))
+
+(define (furlongs-to-barleycorns furLength)
+  (inch-to-barleycorns (feet-to-inch (rods-to-feet (chains-to-rods
+                         (furlongs-to-chains furLength))))))
+
+;; TESTS:
+
+(begin-for-test
+  (check-equal? (furlongs-to-barleycorns 2) 47520
+                "2 furlongs should be 47520 barleycorns")
+  (check-equal? (furlongs-to-barleycorns 4.5) 106920
+                "4.5 furlongs should be 106920 barleycorns"))
+
+(begin-for-test
+  (check-equal? (furlongs-to-chains 2) 20
+                "2 furlongs should be 20 chains")
+  (check-equal? (furlongs-to-chains 4.5) 45
+                "4.5 furlongs should be 45 chains"))
+
+(begin-for-test
+  (check-equal? (chains-to-rods 2) 8
+                "2 chains should be 8 rods")
+  (check-equal? (chains-to-rods 4.5) 18
+                "4.5 chains should be 18 rods"))
+
+(begin-for-test
+  (check-equal? (rods-to-feet 2) 33
+                "2 rods should be 33 feet")
+  (check-equal? (rods-to-feet 4.5) 74.25
+                "4.5 rods should be 74.25 feet"))
+
+(begin-for-test
+  (check-equal? (feet-to-inch 2) 24
+                "2 feet should be 24 inches")
+  (check-equal? (feet-to-inch 4.5) 54
+                "4.5 feet should be 54 inches"))
+
+(begin-for-test
+  (check-equal? (inch-to-barleycorns 2) 6
+                "2 inches should be 6 barleycorns")
+  (check-equal? (inch-to-barleycorns 4.5) 13.5
+                "4.5 inches should be 13.5 barleycorns"))

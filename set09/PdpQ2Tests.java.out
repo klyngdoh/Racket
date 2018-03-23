@@ -1,0 +1,20 @@
+Running test: outranks - simple cycle... PASS
+Running test: A outranks B and D transitively... PASS
+Running test: E does not outrank anyone... PASS
+Running test: outranks - cycle with a tie... PASS
+Running test: outrankedBy - small cycle... PASS
+Running test: outrankedBy - A is undefeated... PASS
+Running test: outrankedBy - F is undefeated... PASS
+Running test: outranks - multiple cycles 1... PASS
+Running test: outranks - multiple cycles 2... PASS
+Running test: outrankedBy - self-outrank due to tie... PASS
+Running test: C has higher non-losing percentage than A... FAIL
+  actual:   [A, B, C]
+  expected: [C, A, B]
+Running test: powerRanking - multiple cycles (defeats+ties)... FAIL
+  actual:   [A, F, I, M, K, O, B, C, D, J, L, N, P, E, H]
+  expected: [A, F, I, M, K, O, C, D, E, J, N, P, B, H, L]
+Running test: E has the highest non-losing percentage... PASS
+Running test: alphabetical order gets precedence... PASS
+Running test: powerRanking - multiple cycles (defeats only)... PASS
+13 success(es) 2 failure(s) 0 error(s) 15 test(s) run

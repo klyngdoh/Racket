@@ -1,0 +1,101 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname q4) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(require rackunit)
+(require "extras.rkt")
+(check-location "01" "q4.rkt")
+      
+(provide flopy)
+
+;; DATA DEFINITIONS
+;; flopSecond is represented as a positive integer
+;; flopYear is represented as a positive integer
+
+;; GLOBAL CONSTANTS
+(define SECS_MIN 60)
+(define MINS_HR 60)
+(define HRS_DAY 24)
+(define DAYS_YR 365)
+
+;; flopy: flopSecond -> flopYear
+;; GIVEN: The number of floating point operations a microprocessor can perform
+;;        in 1 second
+;; RETURNS: The nuumber of floating point operations the same microprocessor
+;;          can perform in 1 year
+
+;;(flopy 
+
+;;EXAMPLES:
+;; (flopy 1) = 31536000
+;; (flopy 450) = 14191200000
+
+;; (flopM 1) = 60
+;; (flopM 450) = 27000
+
+;; (flopH 1) = 31536000
+;; (flopH 450) = 27000
+
+;; (flopD 1) = 31536000
+;; (flopD 450) = 10800
+
+;; (flopY 1) = 31536000
+;; (flopY 450) = 164250
+
+;; DESIGN STRATEGY: Transcribe mathematical formula
+
+(define (flopM flopSecond)
+  (* flopSecond SECS_MIN))
+
+(define (flopH flopMin)
+  (* flopMin MINS_HR))
+
+(define (flopD flopHrs)
+  (* flopHrs HRS_DAY))
+
+(define (flopY flopDays)
+  (* flopDays DAYS_YR))
+
+(define (flopy flopSecond)
+  (flopY (flopD (flopH (flopM flopSecond)))))
+
+;; TESTS:
+
+(begin-for-test
+  (check-equal? (flopy 1) 31536000
+                "A microprocessor performing 1 flops should perform
+31536000flopy")
+  (check-equal? (flopy 450) 14191200000
+                "A microprocessor performing 450 flops should perform
+14191200000 flopy"))
+
+(begin-for-test
+  (check-equal? (flopM 1) 60
+                "A microprocessor performing 1 flops should perform
+60 flopm")
+  (check-equal? (flopM 450) 27000
+                "A microprocessor performing 450 flops should perform
+27000 flopm"))
+
+(begin-for-test
+  (check-equal? (flopH 1) 60
+                "A microprocessor performing 1 flopm should perform
+60 floph")
+  (check-equal? (flopH 450) 27000
+                "A microprocessor performing 450 flopm should perform
+27000 floph"))
+
+(begin-for-test
+  (check-equal? (flopD 1) 24
+                "A microprocessor performing 1 floph should perform
+24 flopd")
+  (check-equal? (flopD 450) 10800
+                "A microprocessor performing 450 floph should perform
+10800 flopd"))
+
+(begin-for-test
+  (check-equal? (flopY 1) 365
+                "A microprocessor performing 1 flopd should perform
+365 flopy")
+  (check-equal? (flopY 450) 164250
+                "A microprocessor performing 450 flopd should perform
+164250 flopy"))

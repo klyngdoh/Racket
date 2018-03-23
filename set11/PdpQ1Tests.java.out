@@ -1,0 +1,37 @@
+Running test: empty rosters with streams are equal... PASS
+Running test: empty rosters with streams does not equal null... PASS
+Running test: nonempty rosters with streams does not equal null... PASS
+Running test: empty rosters with streams does not equal System.class... PASS
+Running test: nonempty rosters with streams does not equal System.class... PASS
+Running test: equals, same order, immutability... PASS
+Running test: equals, different order... PASS
+Running test: unequal rosters with stream... PASS
+Running test: unequal rosters with stream, one empty... PASS
+Running test: readyCount with redundant addition... PASS
+Running test: hashCode, immutability... PASS
+Running test: toString(), two nonempty... PASS
+Running test: set size, immutability... PASS
+Running test: has()... PASS
+Running test: iterator over multiple players... PASS
+Running test: iterator with same name... PASS
+Running test: iterator and size for empty... PASS
+Running test: iterator, immutability... PASS
+Running test: allMatch should be true for p.available()... PASS
+Running test: allMatch should be false for p.available()... PASS
+Running test: anyMatch should be false for p.isInjured()... PASS
+Running test: anyMatch should be true for !p.available()... PASS
+Running test: count should be zero for an empty roster... PASS
+Running test: count should be four for the given roster... PASS
+Running test: distinct count should be four for the given roster... PASS
+Running test: filter should filter out for the given roster... PASS
+Running test: find any should return one of the two filter output... PASS
+Running test: find first should return players in alphabetical order by name... PASS
+Running test: foreach iterates through out the roster stream... PASS
+Running test: counter should return zero for an empty roster... PASS
+Running test: map should return an empty stream when given empty stream... PASS
+Running test: map should return player who is not under contract... PASS
+Running test: reduce should return names for r0 players... PASS
+Running test: skipping items of empty stream should work... PASS
+Running test: skipping items of stream should return the remaining stream... PASS
+Running test: check for toArray() and skip()... PASS
+36 success(es) 0 failure(s) 0 error(s) 36 test(s) run
